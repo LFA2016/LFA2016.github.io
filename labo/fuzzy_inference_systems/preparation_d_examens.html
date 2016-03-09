@@ -1,0 +1,99 @@
+<!DOCTYPE html><html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><title>Systèmes experts flous</title>
+    <style type="text/css">
+    body { 
+        margin:40px auto;
+        max-width:650px;
+        line-height:1.6;
+        font-size:18px;
+        color:#444;
+        padding:0 10px
+     }
+     h1,h2,h3 {
+        line-height:1.2
+     }
+    </style>
+</head>
+<body>
+<h1>Systèmes experts flous</h1>
+<h2>Système d’aide à la décision: Gestion de priorités pour préparation d’examens</h2>
+<p>
+Pour cet exercice vous serez (partiellement) l’«expert» et le «modélisateur». Pour cela vous devez décrire de quelle façon gérez ou géreriez-vous l’affectation de priorités lors de la préparation de plusieurs examens.
+</p>
+
+<h3> I. Définition du système flou d’aide à la décision</h3>
+<p>
+Pour vous “faciliter” la tâche, on vous impose un système avec les variables suivantes:
+<ol type="A">
+    <li>
+    Le système fournit en sortie une valeur de priorité entre 0 (pas de priorité) et 1 (priorité maximale)
+    </li>
+    <li>
+    La décision est prise sur la base de 4 variables d’entrée:
+    <ol type="1">
+        <li>(D) Difficulté du contenu, évaluée avec des valeurs allant de 1 (très facile) à 10 (très difficile).</li>
+        <li>(I) Importance, évaluée avec des valeurs allant de 1 (le moins important) à 10 (le plus important).</li>
+        <li>(W) Travail restant à préparer, évaluée avec des valeurs entre 0% et 100%.</li>
+        <li>(T) Temps jusqu’à l’examen, exprimée en valeurs allant de 1 jour à 30 jours.</li>
+    </ol>
+    </li>
+</ol>
+<h3> II. Démarche à suivre</h3>
+<ol type="A">
+    <li>
+    Proposition d’un système expert flou pour le problème proposé
+    <ol type="1">
+        <li>Construisez un système flou qui soit en mesure de proposer des priorités pour chacun des examens des cours présentés plus bas.</li>
+        <li>Les variables suggérés peuvent être utilisées toutes ou en partie. Justifiez vos choix à niveau des variables, des fonctions d’appartenance et des règles.</li>
+        <li>Les règles d’un système flou ne doivent pas comporter, forcément, toutes les variables du système.</li>
+    </ol>
+    </li>
+    <li>
+    Simulation, analyse et validation du système expert flou
+    <ol type="1">
+        <li>
+        Testez votre système flou sur les données proposées ci-dessous (examens pour 5 cours). Est-ce que les priorités obtenues semblent cohérentes? Si non, pouvez-vous facilement modifier votre système pour l’améliorer?
+        <table>
+        <col width=10%>
+        <col width=10%>
+        <col width=10%>
+        <col width=10%>
+        <col width=10%>
+        <tr>
+            <td>Cours 1</td><td>D=8</td><td>I=4</td><td>W=30</td><td>T=4</td>
+        </tr>
+        <tr>
+            <td>Cours 2</td><td>D=4</td><td>I=6</td><td>W=50</td><td>T=6</td>
+        </tr>
+        <tr>
+            <td>Cours 3</td><td>D=10</td><td>I=7</td><td>W=10</td><td>T=10</td>
+        </tr>
+        <tr>
+            <td>Cours 4</td><td>D=2</td><td>I=3</td><td>W=80</td><td>T=3</td>
+        </tr>
+        <tr>
+            <td>Cours 5</td><td>D=6</td><td>I=9</td><td>W=40</td><td>T=14</td>
+        </tr>
+        </table>
+        </li>
+        <li>
+        Influence des variables sur le comportement
+        <ol type="a">
+            <li>En supposant qu’un jour se passe sans que vous avanciez dans la préparation de vos examens (c’est à dire seule la variable T change en devenant T-1), de quelle façon sont modifiées les priorités proposées? Est-il logique?</li>
+            <li>Répétez le point a) supposant qu’un deuxième jour se passe sans avancer. Répondez aux mêmes questions.</li>
+            <li>En utilisant comme valeurs de base celles d’un des cours proposées (p.ex. Cours 3), observez comment la priorité est modifié si chacune des variables varie entre ses valeurs minimale et maximale.</li>
+        </ol>
+        </li>
+    </ol>
+    <li>
+    Analysez les comportements observés et faites un petit résumé de vos résultats et vos conclusions.
+    </li>
+
+</ol>
+</p>
+
+</body>
+</html>
+
