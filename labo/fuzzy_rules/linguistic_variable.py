@@ -74,7 +74,7 @@ class BaseLinguisticVariable:
             mf.plot(self.input_values, name=name)
             if self.input_value:
                 activation = mf(self.input_value)
-                pl.plot([0, self.input_value, self.input_value, self.input_value], [activation, activation, 0, activation], 'k--')
+                pl.plot([self.v_min, self.input_value, self.input_value, self.input_value], [activation, activation, 0, activation], 'k--')
         pl.ylim(0, 1.05)
         pl.legend(loc=7)
         pl.grid(True)
