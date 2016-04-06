@@ -25,7 +25,7 @@ class FuzzyRule:
                           'OR_probsum': lambda x: np.sum(x) - np.prod(x),
                           'OR_boundsum': lambda x: np.min([1, np.sum(x)])}
     __fuzzy_implication = {'MIN': np.minimum,
-                           'PROD': np.prod}
+                           'PROD': np.multiply}
     
     def __init__(self, operation, antecedent, consequent, implication):
         """
