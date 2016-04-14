@@ -1,0 +1,394 @@
+<!DOCTYPE HTML5>
+<head>
+<title>LFA 2016</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">-->
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="main.css">
+    
+    <style>
+        body {
+            color: #333;
+            font-family: sans-serif;
+        }
+
+        .header {
+             margin: 0;
+             color: #333;
+             text-align: center;
+             padding: 2em;
+        }
+
+        .content {
+            margin: 0 auto;
+            padding: 0 2em;
+            max-width: 800px;
+            margin-bottom: 50px;
+            line-height: 1.6em;
+        }
+
+        .section {
+            border-bottom: 10px solid #ccc;
+        }
+
+        /*.section h2::before {
+            width: 5px;
+            content: "| ";
+        }*/
+
+        .section h2 {
+            text-decoration: underline;
+        }
+
+        a { 
+            color: #3b8bba;
+            text-decoration: none;
+        }
+
+        a:hover {
+            /*font-weight: bold;*/
+            text-decoration: underline;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 10px;
+        }
+        caption { font-size: larger; margin: 1em auto; }
+        th, td { padding: .65em; }
+        th, thead { background: #eee; color: #000; border: 1px solid #000; }
+        td { border: 1px solid #777; }
+    </style>
+</head>
+
+<body>
+
+<div id="layout" class="pure-g">
+        <div class="header">
+            <h1>Evolutionary Fuzzy Systems</h1>
+        </div>
+        <div class="content">
+            <div class="section">
+                <h2>1. Download the virtual machine</h2>
+                <p>For this laboratory, we will not use python, but FUGE.</p>
+                <p>This version of FUGE runs <b>only on Linux</b>. We recommend
+                that you use the <a href="https://drive.switch.ch/index.php/s/XT4BSQ1JFsFag4A">LFA_VM_2016 Virtual Machine</a>.</p>
+            </div>
+            <div class="section">
+                <h2>2. Test FUGE</h2>
+                <ul>
+                    <li>Open a terminal in the <i>FUGE_with_data</i> directory</li>
+                    <li>Type <i>./run.sh</i> to start FUGE. The main window
+                    should open.</li>
+                    <li>Load the <i>Cancer_Files/CancerDiag2_headers.csv</i> dataset
+                       by using the "Open..." button of the Dataset section of
+                       the main window.</li>
+                    <li>Open the <i>Cancer_Files/CancerRef.fs</i> script using
+                       a text editor. Verify that <i>savePath</i> points to an existing
+                       directory (e.g. <i>/home/lfa/Desktop/test</i>). This is the
+                       path where FUGE will save its log files.</li>
+                    <li>Load the script in FUGE using the "Open..." button of the
+                       Script section.</li>
+                    <li>Click the "Show Fitness Plot" button</li>
+                    <li>Start the coevolution with "RunScript"</li>
+                    <li>You should see a plot with the performance of the
+                        system. After some time, you will also see some log
+                        folders appear on the destination you chose (<i>fuzzySystems</i>,
+                        <i>logs</i>)
+                    </li>
+                </ul>
+                <a target="_blank" href="fuge_vm.png"><img width="800px" src="fuge_vm.png" /></a>
+            </div>
+            
+            <br>
+            <br>
+            
+            <div class="section">
+                <h2>3. Assignment - Supervised Learning, Evolution of fuzzy systems</h2>
+                  <div align="right">Héctor Satizábal</div>
+                  <div align="right">Carlos Peña</div>
+
+                  <hr width="100%">
+                  <br>
+
+                  <center>
+                   <table nosave="" border="1" cols="2" width="80%">
+                   <tbody>
+                    <tr nosave="">
+                     <td nosave="" bgcolor="#cccccc">
+                      <center>
+                       <img src="./Lab6_EvoFuzzy_files/yy.png" height="300" width="480">
+                      </center>
+                     </td>
+                     <td>
+                      <center>
+                      <b>"Those who have knowledge, don't predict.<br>
+                      Those who predict, don't have knowledge." <br>
+                      Lao Tzu, 6th Century BC</b>
+                      </center>
+                     </td>
+                    </tr>
+                   </tbody>
+                   </table>
+                  </center>
+
+                  <p>In this laboratory you will explore another approach to supervised learning. The goal of this practice is to build a simple rule-based model able to both detecting the presence of arrhythmia in an electrocardiogram and explaining the conditions allowing to such diagnostic. To do that you will apply a method based on evolutionary fuzzy modelling, that combines the knowledge representation of fuzzy logic with the search power of artificial evolution.
+                  </p>
+
+
+                  <!--<p><font size="+2">1. Supervised Learning</font></p>-->
+                  <!--<p>-->
+                  <!--In machine learning there are several mechanisms for inferring a model from a set of observations. On the one hand there is <b>unsupervised learning</b> which exploits unlabeled data, and aims at revealing their underlying structure. Clustering techniques are often of this type. On the other hand there is <b>supervised learning</b> which is used when data contain labels and one wants to find some mapping between the input data and the output labels. Classification and regression tasks are usually solved by using this paradigm. Moreover, <b>reinforcement learning</b> lies in between, needing less labeled data than supervised learning (which requires all the data to be labeled), but unable to operate without any feedback from the target (as in unsupervised learning).-->
+                  <!--</p>-->
+
+                  <p><font size="+2">1. Fuzzy Systems and Fuzzy Modeling</font></p>
+                  <p>
+                  A fuzzy inference system (or simply a fuzzy system) is a rule-based system that uses fuzzy logic, rather than Boolean logic, to reason about data. Fuzzy logic is a computational paradigm that provides a mathematical tool for representing and manipulating information in a way that resembles human communication and reasoning processes. It is based on the assumption that, in contrast to Boolean logic, a statement can be partially true (or false), and composed of imprecise concepts. For example, the expression "I live near Geneva", where the fuzzy value "near" applied to the fuzzy variable "distance", in addition to being imprecise, is subject to interpretation. The foundations of Fuzzy Logic were established in 1965 by Lotfi Zadeh in his seminal paper about fuzzy sets. Fuzzy models present three distinguishable features: (1) the use of linguistic variables in place or in addition to numerical variables, (2) the description of simple relations between variables by conditional fuzzy statements, and (3) the characterization of complex relations by fuzzy algorithms. An important issue in designing fuzzy models, which is a difficult and extremely ill-defined process, involves the question of providing a methodology for their development. i.e., a set of techniques for obtaining the fuzzy model from information and knowledge about the system.
+                  </p>
+                  <p>
+                  Fuzzy modeling is thus the task of identifying (finding, discovering, computing) the parameters of a fuzzy inference system so that a desired behavior is attained. Note that, due to linguistic and numeric requirements, the fuzzy-modeling process has generally to deal with an important trade-off between the performance and the interpretability of the model.  In other words, the model is expected to provide high numeric precision while incurring as little a loss of linguistic descriptive power as possible. One of the major problems in fuzzy modeling is the curse of dimensionality, meaning that the computation requirements grow exponentially with the number of variables.
+                  </p>
+
+                  <p><font size="+2">2. Evolutionary Computation and Evolutionary Fuzzy Modeling</font></p>
+                  <p>
+                  The domain of evolutionary computation involves the study of the foundations and the applications of computational techniques based on the principles of natural evolution. Evolution in nature is responsible for the "design" of all living beings on earth, and for the strategies they use to interact with each other. Evolutionary algorithms employ this powerful design philosophy to find solutions to hard problems. They are used to search large, and often complex, search spaces and have proven worthwhile on numerous diverse problems, able to find near-optimal solutions given an adequate performance (fitness) measure.
+                  </p>
+                  <p>
+                  Fuzzy modeling can be considered as an optimization process where part or all of the parameters of a fuzzy system constitute the search space. Inviting, thus, to use evolutionary algorithms to drive such a process. Depending on several criteria, including the available a priori knowledge about the system, the size of the parameter set, and the availability and completeness of input-output data, artificial evolution can be applied in different stages of the fuzzy-parameter search. In many cases, the available information about the system is composed almost exclusively of input-output data. In such a case, evolution has to deal with the simultaneous design of rules and membership functions.
+                  </p>
+                  <p>
+                  In our group we apply a Cooperative Coevolutionary approach to fuzzy modeling wherein two coevolving species are defined: one for evolving membership functions and a second one for evolving rules. Under this approach, the fuzzy modeling problem is solved by two coevolving, cooperating species. Individuals of the first species encode values which define completely the membership functions for all the variables of the system. Individuals of the second species define a set of rules of the form:
+                  <br><center><em>IF (V1 IS A1) AND ... (Vn IS An) THEN (output IS C)</em>,</center>
+                  <br>where the term <em>Ai</em> indicates which one of the linguistic labels of the fuzzy variable <em>V</em> is used by the rule. For example, a valid rule could contain the expression:
+                  <br><center><em>IF ... AND (Temperature IS Warm) ... THEN ...</em></center>
+                  <br>which includes the membership function <em>Warm</em> whose defining parameters are contained in the first species.
+
+                  </p>
+
+                  <p><font size="+2">3. Evolution of Fuzzy Systems with FUGE</font></p>
+                  <p>
+                  In this laboratory session you will use the tool FUGE (standing for FUzzy Genetic Engine) conceived and maintained at the HEIG-VD by Professor Peña's team. (You should add the current version of FUGE to your virtual machine following the instructions received separately.) For the purpose of this laboratory you will use the tool through its main user interface (shown in the figure below), although the tool allows for more automated execution based on either a simple script utility or by means of command line calls.
+                  <ul>
+                      <center>
+                          <img src="./Lab6_EvoFuzzy_files/FUGE_MainWindow.png" width="640" height="640"><br>
+                              Figure 1. FUGE Main Window.
+                      </center>
+                      <br>
+
+                  <p><font size="+1">3.1. An Introductory Example</font></p>
+                  <p>
+                  In this example we are going to use a very popular dataset concerning the classification of Iris flowers. This is, perhaps, the best known database to be found in the pattern recognition literature. The data set consists of 50 samples from each of three species of Iris (Iris setosa, Iris virginica and Iris versicolor). One class is linearly separable from the other 2; the latter are not linearly separable from each other. The data we are going to use as explanatory variables (inputs) are the measurements in centimeters of the sepal length and width and petal length and width. The output variable, on the other hand, is the species of Iris: setosa, versicolor and virginica.
+                  <br>This dataset is contained within the corresponding directory and may be accessed through the <em>Open...</em> button in the <em>Dataset</em> section. Figure 1 shows a scatterplot of the Iris dataset. Notice that, as mentioned, one of the classes is linearly separable from the others (i.e., setosa in red).
+
+                  <center>
+                      <img src="./Lab6_EvoFuzzy_files/iris.png" width="640" height="640"><br>
+                          Figure 2. Iris Data Scatterplot.
+                          </center>
+                  <br>
+
+                  Once, the dataset is loaded, you should define the parameters of the algorithm. This is done through the <em>Edit...</em> button in the <em>Parameters</em> section which open a dialog window already containing default parameter values. It is possible to load/save these values from/in a configuration file (extension .config). You will find such a file into the provided Iris data directory contaning the parameters shown in Figure 3.
+                  <br><br>
+                  <center>
+                      <img src="./Lab6_EvoFuzzy_files/FUGE_EditParamsIris.png" width="740" height="640"><br>
+                          Figure 3. Parameter setting for the Iris dataset.
+                          </center>
+                  <br>
+
+
+                  <!--Some relevant parameters are:-->
+                  <!--<br>-->
+                  <!--<br>-->
+                  <!--<center>-->
+                  <!--<table border="1">-->
+                  <!-- <tbody>-->
+                  <!-- <tr> <td> <b>Parameter</b> </td> <td> <b>Value</b> </td> </tr>-->
+                  <!-- <tr> <td> <b>Structural parameters </b> </td> </tr>-->
+                  <!-- <tr> <td> Number of rules </td> <td> 3 </td> </tr>-->
+                  <!-- <tr> <td> Number of output variables </td> <td> 3 </td> <td>One per class</td> </tr>-->
+                  <!-- <tr> <td> Number of membership functions (sets) per input </td> <td> 3 </td> </tr>-->
+                  <!-- <tr> <td> Number of membership functions (sets) per output </td> <td> 2 </td> </tr>-->
+                  <!-- <tr> <td> Maximum number of variables per rule </td> <td> 4 </td> </tr>-->
+                  <!-- <tr> <td> <b>Membership function genome encoding </b> </td> <td> <b> Numeric values </b> </td> </tr>-->
+                  <!-- <tr> <td> Number of bits to code position of input sets </td> <td> 7 </td> </tr>-->
+                  <!-- <tr> <td> Number of bits to code position of output sets </td> <td> 1 </td> </tr>-->
+                  <!-- <tr> <td> <b>Rule genome encoding </b> </td> <td> <b> Integer values </b> </td></tr>-->
+                  <!-- <tr> <td> Number of bits to code indices of input variables </td> <td> 3 </td> </tr>-->
+                  <!-- <tr> <td> Number of bits to code indices of output variables </td> <td> 1 </td> </tr>-->
+                  <!-- <tr> <td> Number of bits to code indices of input sets </td> <td> 2 </td> </tr>-->
+                  <!-- <tr> <td> Number of bits to code indices of output sets </td> <td> 1 </td> </tr>-->
+                  <!-- <tr> <td> <b>Coevolutionary algorithm parameters </b> </td> <td> <b> Pop1: sets, Pop2: rules </b> </td></tr>-->
+                  <!-- <tr> <td> Number of generations </td> <td> 500 </td> </tr>-->
+                  <!-- <tr> <td> Fitness value for stopping </td> <td> 1 </td> </tr>-->
+                  <!-- <tr> <td> Population size </td> <td> 100 </td> </tr>-->
+                  <!-- <tr> <td> Size of the elite </td> <td> 4 </td> </tr>-->
+                  <!-- <tr> <td> Crossover rate </td> <td> 0.7 </td> </tr>-->
+                  <!-- <tr> <td> Mutation rate (Individual level) </td> <td> 0.3 </td> </tr>-->
+                  <!-- <tr> <td> Mutation rate (Bit-level) </td> <td> 0.01 </td> </tr>-->
+                  <!-- <tr> <td> <b>Fitness weights </b> </td> <td> <b> Numeric [0..1] </b> </td></tr>-->
+                  <!-- <tr> <td> Sensitivity</td> <td> 0.2 </td> </tr>-->
+                  <!-- <tr> <td> Specificity</td> <td> 0.1 </td> </tr>-->
+                  <!-- <tr> <td> Accuracy</td> <td> 1.0 </td> </tr>-->
+                  <!-- <tr> <td> RMSE</td> <td> 0.5 </td> </tr>-->
+                  <!-- <tr> <td> Size</td> <td> 0.1 </td> </tr>-->
+                  <!-- </tbody>-->
+                  <!--</table>-->
+                  <!--Table 1. Default values of the function <em>ga.fuzz</em>-->
+                  <!--</center>-->
+                  <!--<br>-->
+
+                  Some modifications must be done to these parameters so as to correctly create a model for a given problem using FUGE. You are allowed to modify all the parameters to improve the behaviour of the algorithm and to obtain better results. For example, increasing the number of generations will cause coevolution to run longer and hence, to further explore the space of solutions (fuzzy systems).
+                  <br>Once the parameters have been set either directly or through a script, the experience can be launched with the button <em>Run</em>. The behaviour of the ongoing evolutionary run may be monitored through the <em>Fitness Plot</em> window as illustrated in Figure 4. As it can be observed, it is important to allow coevolution to run long enough. In this particular example, if we stopped the evolution at 100 generations we would miss a further tuning of the models happening later (red oval).
+                  <br><br>
+                  <center>
+                      <img src="./Lab6_EvoFuzzy_files/FUGE_EvolutionStats.png" width="740" height="400"><br>
+                          Figure 4. Fitness evolution through an experiment running 500 generations.
+                  </center>
+                  <br>
+
+                  Depending on the problem, you may want, or need, to change the size of the population, the crossover rate, the mutation rate, the number of rules, the number of variables per rule, or any of the parameters listed in Figure 3. FUGE provides a basic scripting capability that facilitates programming a series of experiments with varying parameter values. These scripts are managed through the commands avaiable in the <em>Script</em> section, and its execution launched with the <em>RunScript</em> button.
+                  <br>
+                  For instance, changing the individual mutation rate will influence the amount of "novelty" of the population and thus its capacity to carefully explore a given area in the solution space. The example shown by Figure 4 illustrates the effects on the fitness of different mutation rates. As it can be seen, higher mutation rates decrease the average fitness, which means that the search for better solutions is guided more by chance than by the evolutionary operators (i.e., selection and crossover). Notice that due to the simplicity of the Iris dataset, the mutation rate seems to have little effect on the best systems found. However, it may be deleterous in other harder modelling problems.
+
+                  <br>
+                  <br>
+                  <center>
+                  <table>
+                   <tbody>
+                   <tr> <td> <a target="_blank" href="./Lab6_EvoFuzzy_files/FUGE_Iris_Mut01.png">
+                                <img src="./Lab6_EvoFuzzy_files/FUGE_Iris_Mut01.png" width="350">
+                             </a>
+                       </td>
+                        <td>
+                            <a target="_blank" href="./Lab6_EvoFuzzy_files/FUGE_Iris_Mut03.png">
+                              <img src="./Lab6_EvoFuzzy_files/FUGE_Iris_Mut03.png" width="350">
+                          </a>
+                        </td>
+                   </tr>
+                   <tr> <td> <center> a) mutation rate 0.1 </center> </td>
+                        <td> <center> b) mutation rate 0.3 </center> </td>
+                   </tr>
+                   <tr> <td>
+                       <a target="_blank" href="./Lab6_EvoFuzzy_files/FUGE_Iris_Mut06.png">
+                            <img src="./Lab6_EvoFuzzy_files/FUGE_Iris_Mut06.png" width="350">
+                        </a></td>
+                        <td>
+                          <a target="_blank" href="./Lab6_EvoFuzzy_files/FUGE_Iris_Mut09.png">
+                            <img src="./Lab6_EvoFuzzy_files/FUGE_Iris_Mut09.png" width="350">
+                        </a>
+                      </td>
+                   </tr>
+                   <tr> <td> <center> c) mutation rate 0.6 </center> </td>
+                       <td> <center> d) mutation rate 0.9 </center> </td>
+                   </tr>
+                   </tbody>
+                  </table>
+                  Figure 5. Effects of changing the mutation rate
+                  </center>
+                  <br>
+                  <br>
+
+                  As you may have noticed, the best system found by FUGE can be saved after the evolutionary run (in a script execution it is done after each experiment). The file (with extension .ffs in XML format) contains a description of the system as well as information on the weights of the different criteria used to compute its fitness. These files are managed through the <em>Fuzzy System</em> section.
+                  <br>Saved systems may be reloaded on FUGE with the <em>Open</em> command and their behaviour on a given dataset simulated with the <em>Validate</em> and <em>Evaluate</em> commands. (Note: The <em>Validate</em> command is usually used on the system obtained from an ongoing experiment to validate its behaviour on the training dataset used to evolve it. The <em>Evaluate</em> command is used on any fuzzy system with any compatible dataset, including test sets). Figure 6 shows the evaluation of an example evolved model for the Iris dataset.
+                  <br>As one can notice, the window offers also additional information on the rules and membership functions of the systems as well as on its performance measurements (fitness). In the example, the model possesses two rules that use only two of the four input variables (i.e., <em>PL</em> and <em>PW</em>). It attains an accuracy of 97.33%, corresponding to 96% of sensitivity and 98% of specificity.
+                  <br><br>
+                  <center>
+                      <img src="./Lab6_EvoFuzzy_files/FUGE_IrisEvaluation.png" width="750" height="450"><br>
+                          Figure 6. Evaluation of an evolved Iris model. The graphic illustrates the system's behaviour for the second output variable <em>Versicolor</em>. Two additional windows show a summary of the fuzzy system under evaluation and of its fitness evaluation.
+                  </center>
+                  <br>
+
+                  <br>All the details of the current fuzzy system may be revised and modified through the <em>Edit</em> command. In this context it is also possible to obtain a graphic representation of the membership functions to better understand them. Figure 7 shows the membership functions of the two variables used by the fuzzy system under analysis.
+                  <br>
+                  <br>
+
+                  <center>
+                  <table>
+                   <tbody>
+                   <tr> <td> <img src="./Lab6_EvoFuzzy_files/FUGE_Iris_VarPL.png" height="300" width="350"> </td> <td> <img src="./Lab6_EvoFuzzy_files/FUGE_Iris_VarPW.png" height="300" width="350"> </td> </tr>
+                   </tbody>
+                  </table>
+                  Figure 7. Editing and visualizing the fuzzy system. Graphic representation of the input membership functions of the example fuzzy model</em>
+                  </center>
+                  <br>
+
+
+                  </p>
+
+                  <p><font size="+2">4. Evolution of a classifier based on fuzzy systems for the detection of arrhythmia</font></p>
+                  <p>
+
+                  </p>
+
+                  <p><font size="+1">4.1 The dataset</font></p>
+                  <p>
+                  The arrhythmia dataset contains relevant information for detecting arrhythmia in 452 subjects. There are 279 input attributes (or features) and one class attribute indicating whether the observation was taken from a person suffering arrhythmia or not. More information about this dataset can be found on the <a href="http://archive.ics.uci.edu/ml/datasets/Arrhythmia">UCI machine learning repository</a>. The original dataset containing information about 16 different types of arrhythmia has been simplified to a simpler diagnostic: normal or arrhythmia. The simplified dataset is available in the corresponding data directory.
+
+
+                  <center>
+                  <table border="1" nosave="" width="100%">
+                   <tbody>
+                    <tr>
+                     <td>
+                      <font size="+2">4.2 Exercise</font>
+                      <br>
+                      You have to build arrhythmia detectors using the evolutionary approach presented above for building fuzzy systems. The script included in the data directory gives you a starting point.
+                      <br>
+                  To allow evolution building good fuzzy classifiers, you have to modify this script and find adequate parameter values, i.e., number of generations, population size, mutation rate, number of membership functions per input, number of rules, number of variables per rule. Bear in mind that small systems are easier to interpret, and perhaps easier to discover, than larger ones (Although they possibly attain lower performances).
+                      <br>
+                      Once you have found an adequate set of parameter values, report your results (obtained through several tests) using three different combination of weights for the fitness function, as follows:
+                      <br>
+                      <br>
+                      <center>
+                      <table border="1" nosave="">
+                          <tr><bm><td>Criterion weight</td> <td>Exp.1</td> <td>Exp.2</td> <td>Exp.3</td> </bm> </tr>
+                              <tr> <td>Accuracy</td> <td>1</td> <td>1</td> <td>1</td> </tr>
+                              <tr> <td>Sensitivity</td> <td>0</td> <td>1</td> <td>1</td> </tr>
+                              <tr> <td>Specificity</td> <td>0</td> <td>1</td> <td>1</td> </tr>
+                              <tr> <td>RMSE</td> <td>0</td> <td>0</td> <td>0.4</td> </tr>
+                              <tr> <td>Size</td> <td>0.1</td> <td>0.1</td> <td>0.1</td> </tr>
+                      </table>
+                      </center>
+                      <br><br>
+                      Look at the differences in accuracy, sensitivity and specificity obtained in all cases.
+                      Analyse two or three of the best systems you obtained. Look at their rules, their input variables and their membership functions. Is it possible/easy to interpret these systems? (Note: A brief description of the input variables can be found in the <a href="http://archive.ics.uci.edu/ml/datasets/Arrhythmia">UCI machine learning repository</a>).
+                      <br>
+                      <br>
+                      Try now to obtain some smaller fuzzy systems. To obtain them you should use two approaches:
+                      <ul>
+                          <li>Increasing the weight of the Size criterion (e.g., use for example 0.9 or 1 as weight)
+                          <li>Searching explicitely for systems with 2 rules, 2 variables per rule, and 2 membership functions per variable.
+                      </ul>
+                      <br>
+                      <br>
+                      Analyze the best systems obtained in both cases and answer the following questions about them:
+                      <ul>
+                          <li>How do these systems perform, in terms of specificity, sensitivity, and accuracy, as compared with your previous experiments?
+                          <li>How do these small systems compare with your best system in terms of linguistic simplicity?
+                          <li>Are them more "interpretable"?"
+                      <br>
+                      <br>
+                      <b>Good luck!!
+                      <br>
+                      <br>
+                      Report deadline: 05.05.2016
+                      <br>
+                      <br>
+                      Please, provide a brief report describing your experiments and the results you obtained using the provided data. You should preferably work in groups of two.
+                      </b>
+                     </td>
+                    </tr>
+                   </tbody>
+                  </table>
+                  </center>
+
+                  </p>
+
+                  <hr width="100%">
+                  April 2016
+                  </div>
+        </div>
+    </div>
+</div>
+
+</body>
